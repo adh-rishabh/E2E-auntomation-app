@@ -3,6 +3,9 @@ import { Layout } from '../components/Layout'
 import { DevicePanel } from '../components/DevicePanel'
 import { ScriptEditor } from '../components/ScriptEditor'
 import { RunLogs } from '../components/RunLogs'
+import { ScriptTabs } from '../components/ScriptTabs'
+import { HistoryPanel } from '../components/HistoryPanel'
+import { TopShortcuts } from '../components/TopShortcuts'
 import { useAppStore } from '../store/useAppStore'
 
 export function Studio() {
@@ -28,6 +31,10 @@ export function Studio() {
 					<DevicePanel />
 				</Box>
 				<Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+					<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+						<ScriptTabs />
+					</Box>
+					<TopShortcuts />
 					<Box sx={{ p: 1, borderBottom: 1, borderColor: 'divider' }}>
 						<Button variant="contained" onClick={handleRun} disabled={!currentScriptText.trim()}>
 							Run Script
@@ -37,8 +44,11 @@ export function Studio() {
 						<ScriptEditor />
 					</Box>
 				</Box>
-				<Box sx={{ width: 320 }}>
+				<Box sx={{ width: 320, display: 'flex', flexDirection: 'column' }}>
 					<RunLogs />
+					<Box sx={{ borderTop: 1, borderColor: 'divider', height: 280, minHeight: 0 }}>
+						<HistoryPanel />
+					</Box>
 				</Box>
 			</Stack>
 		</Layout>
